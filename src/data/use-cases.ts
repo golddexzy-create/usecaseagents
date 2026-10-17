@@ -138,6 +138,115 @@ export const useCases: UseCase[] = [
     description:
       "You choose assets and signal sources. Agent produces a concise daily note: key levels, unusual flows, sentiment shifts, and any high-conviction setups.",
   },
+  {
+    id: "7",
+    slug: "elizaos-solana-trading-character",
+    title: "ElizaOS character for Solana trading & research",
+    summary:
+      "Deploy an ElizaOS agent with Solana plugins for natural-language swaps, balance checks, and market research across Discord/Telegram/X.",
+    category: "Trading & Execution",
+    chains: ["Solana"],
+    tools: ["ElizaOS", "Solana Agent Kit / plugin-solana", "Jupiter"],
+    difficulty: "Intermediate",
+    autonomy: "Semi-autonomous",
+    cost: "Free",
+    lastUpdated: "2026-10-14",
+    description:
+      "Create a character file, add @elizaos/plugin-solana (or Solana Agent Kit), set a trade-only or limited key, and let the agent handle quotes, swaps via Jupiter, and token info. Keep risk limits in the character instructions and require confirmation for sizeable trades.",
+    steps: [
+      "Install ElizaOS and add Solana plugin",
+      "Define character with clear risk rules and allowed actions",
+      "Connect wallet / private key with limited permissions",
+      "Run agent on Telegram or Discord and test with paper amounts",
+    ],
+    featured: true,
+  },
+  {
+    id: "8",
+    slug: "wayfinder-crosschain-paths",
+    title: "Wayfinder natural-language cross-chain execution",
+    summary:
+      "Use Wayfinder Paths so an agent can navigate multiple chains and execute swaps or strategies from plain English prompts.",
+    category: "Wallet & Automation",
+    chains: ["Multi-chain", "Arbitrum", "Base", "Hyperliquid"],
+    tools: ["Wayfinder", "Claude / LLM"],
+    difficulty: "Intermediate",
+    autonomy: "Semi-autonomous",
+    cost: "Freemium",
+    lastUpdated: "2026-10-06",
+    description:
+      "Wayfinder lets agents follow ‘Paths’ across chains. You describe the goal (e.g. move USDC from Base to Hyperliquid and open a small perp); the agent plans and can execute under your constraints. Best used with explicit spending limits.",
+  },
+  {
+    id: "9",
+    slug: "heyanon-nl-trading",
+    title: "HeyAnon natural-language spot & leverage trading",
+    summary:
+      "Configure spot and leverage trades with natural language prompts; agent runs autonomously within the rules you set.",
+    category: "Trading & Execution",
+    chains: ["Multi-chain"],
+    tools: ["HeyAnon"],
+    difficulty: "Beginner",
+    autonomy: "Fully autonomous",
+    cost: "Freemium",
+    lastUpdated: "2026-10-06",
+    description:
+      "HeyAnon is rule-based with chat UI. You define conditions and size; the agent executes. Suitable for simpler strategies where you want autonomy without writing code.",
+  },
+  {
+    id: "10",
+    slug: "bankr-defi-copilot",
+    title: "Bankr DeFi copilot & agentic wallet",
+    summary:
+      "Chat-driven DeFi terminal: research, cross-chain swaps, token launches, and wallet actions from one agent interface.",
+    category: "DeFi & Yield",
+    chains: ["Base", "Multi-chain"],
+    tools: ["Bankr", "Claude"],
+    difficulty: "Intermediate",
+    autonomy: "Semi-autonomous",
+    cost: "Freemium",
+    lastUpdated: "2026-10-06",
+    description:
+      "Bankr combines research and execution. Users chat to move assets, launch tokens, or check positions. Works well as a daily driver for Base-focused DeFi with human approval on larger moves.",
+  },
+  {
+    id: "11",
+    slug: "binance-agentic-meme-sniping",
+    title: "Binance Agentic Wallet meme sniping workflow",
+    summary:
+      "Use Binance Agentic Wallet skills (meme-rush + token audit) to find new memes, audit them, and buy with a small size in one conversation.",
+    category: "Solana & Memecoins",
+    chains: ["Solana", "Multi-chain"],
+    tools: ["Binance Agentic Wallet", "meme-rush skill", "query-token-audit"],
+    difficulty: "Beginner",
+    autonomy: "Human-in-the-loop",
+    cost: "Free",
+    lastUpdated: "2026-10-16",
+    description:
+      "Conversation flow: ask for new Solana memes → audit a candidate → buy with fixed USDT amount if risk looks acceptable. Skills handle discovery and security checks; wallet executes only after you confirm.",
+    steps: [
+      "Install Agentic Wallet and required skills",
+      "Ask for recent meme launches",
+      "Run security audit on a token",
+      "Confirm small buy if audit is clean",
+    ],
+  },
+  {
+    id: "12",
+    slug: "aixbt-market-intelligence",
+    title: "aixbt crypto market intelligence terminal",
+    summary:
+      "Narrative detection, alpha analysis, and KOL tracking fed into a chat terminal for faster research before trading.",
+    category: "Research & Market Intelligence",
+    chains: ["Multi-chain"],
+    tools: ["aixbt"],
+    difficulty: "Beginner",
+    autonomy: "Fully autonomous",
+    cost: "Freemium",
+    lastUpdated: "2026-10-06",
+    description:
+      "aixbt focuses on market intelligence rather than execution. Use it to surface narratives, track influencers, and get structured alpha notes that you then act on with a separate trading setup.",
+  },
 ];
 
 export function getUseCaseBySlug(slug: string): UseCase | undefined {
