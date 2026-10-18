@@ -2,42 +2,49 @@
 
 Practical AI agent setups for crypto & trading.
 
-Find real, working use cases for trading, research, Solana, memecoins, portfolio management, risk, signals, and more. No fluff — just what works.
+Not a hype list. Every use case includes tools, chains, difficulty, autonomy level, steps where useful, **what can go wrong**, and a source note.
 
-**Live goal:** https://usecaseagents.com (domain available)
+**Target domain:** usecaseagents.com  
+**Repo:** https://github.com/golddexzy-create/usecaseagents
 
 ## Stack
 
 - Next.js (App Router) + TypeScript
 - Tailwind CSS v4
-- Static data for use cases (easy to expand)
+- Static curated data in `src/data/use-cases.ts`
 
-## Getting Started
+## Features
+
+- Home with featured setups
+- `/use-cases` — search + filters (category, difficulty, autonomy, cost)
+- `/use-cases/[slug]` — detail with risks, steps, related setups
+- Categories, newsletter/submit/sponsors placeholders
+- Sitemap + robots + Open Graph metadata
+- Mobile-first, sticky header, touch-friendly cards
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open http://localhost:3000
 
-## Project structure
+## Add a use case
 
-- `/` — Home with featured setups + categories
-- `/use-cases` — Full directory
-- `/use-cases/[slug]` — Individual use case detail
-- `/categories` — Browse by category
-- `/newsletter` — Weekly best setups (placeholder)
-- `/submit` — Community submissions (placeholder)
-- `/sponsors` — Sponsorship options
+Edit `src/data/use-cases.ts`. Include:
 
-## Data
+- title, summary, category, chains, tools
+- difficulty, autonomy, cost, lastUpdated
+- description, optional steps
+- **risks** (required for legitimacy)
+- **source** (where the pattern comes from)
 
-Use cases live in `src/data/use-cases.ts`. Add new ones there with title, summary, category, chains, tools, difficulty, autonomy, cost, and description.
+## Deploy
 
-## Next steps
+Vercel is the natural fit. Point a custom domain when ready.
 
-- Search + filters on the directory
-- More curated use cases from X / GitHub / Discord
-- Real newsletter provider
-- Deploy to Vercel + custom domain
+## Disclaimer
+
+Not financial advice. Agents can lose money. Start small and verify everything yourself.
