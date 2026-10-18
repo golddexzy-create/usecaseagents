@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { UseCaseCard } from "@/components/UseCaseCard";
-import { getFeaturedUseCases, categories } from "@/data/use-cases";
+import { getFeaturedUseCases, categories, useCases } from "@/data/use-cases";
 
 export default function Home() {
   const featured = getFeaturedUseCases();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-14">
-      {/* Hero */}
       <section className="text-center">
         <h1 className="text-[1.75rem] font-bold leading-tight tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
           Practical AI agent setups
@@ -16,10 +15,13 @@ export default function Home() {
             for crypto & trading
           </span>
         </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+        <p className="mx-auto mt-4 max-w-2xl text-base text-zinc-600 dark:text-zinc-400 sm:text-lg">
           People waste time and money on agents that don’t work. We collect the
           setups that actually do — trading, research, Solana, memecoins,
           portfolio, risk, and more.
+        </p>
+        <p className="mt-3 text-sm font-medium text-emerald-700 dark:text-emerald-400">
+          {useCases.length} practical setups · risks listed on every page
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -38,7 +40,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured */}
       <section className="mt-16">
         <div className="flex items-end justify-between">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-white">
@@ -58,7 +59,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories */}
       <section className="mt-16">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-white">
           Browse by category
@@ -76,7 +76,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value props */}
       <section className="mt-20 grid gap-8 sm:grid-cols-3">
         <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
           <h3 className="font-semibold text-zinc-900 dark:text-white">
