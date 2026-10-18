@@ -60,6 +60,7 @@ export const useCases: UseCase[] = [
       "API key leakage if not scoped to trade-only",
       "Slippage and funding can diverge from backtest",
     ],
+    source: "Botlyz / Hyperliquid agent tooling",
     featured: true,
   },
   {
@@ -82,6 +83,7 @@ export const useCases: UseCase[] = [
       "Social volume can be gamed",
       "Never auto-buy from this alone — human gate required",
     ],
+    source: "Common Solana research agent pattern (Birdeye + DexScreener + social)",
     featured: true,
   },
   {
@@ -104,6 +106,7 @@ export const useCases: UseCase[] = [
       "Threshold too aggressive leads to churn and fees",
       "Oracle/price lag can mis-size rebalances",
     ],
+    source: "Coinbase AgentKit + aggregator routing patterns",
     featured: true,
   },
   {
@@ -121,6 +124,12 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-05",
     description:
       "You define watchlists or criteria (size, labels, protocols). Agent filters noise, adds short context (what the wallet usually does, related positions), and delivers alerts via Telegram or Discord.",
+    risks: [
+      "Label quality varies — smart money is not always right",
+      "Alert fatigue if thresholds are too loose",
+      "Delayed indexers can miss the first minutes of a move",
+    ],
+    source: "Helius / Alchemy webhook + labeled-wallet workflows",
   },
   {
     id: "5",
@@ -137,6 +146,12 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-09-28",
     description:
       "Focuses on capital-efficient stablecoin strategies. Includes risk limits (protocol exposure, max single position) and human approval for larger moves.",
+    risks: [
+      "Smart contract / protocol risk on every move",
+      "Rate changes between quote and execution",
+      "Gas can wipe small yield edges on mainnet",
+    ],
+    source: "DeFiLlama rate comparison + agentic wallet patterns",
   },
   {
     id: "6",
@@ -153,6 +168,12 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-14",
     description:
       "You choose assets and signal sources. Agent produces a concise daily note: key levels, unusual flows, sentiment shifts, and any high-conviction setups.",
+    risks: [
+      "Signals conflict — digest is not a trade instruction",
+      "Overfitting to recent narratives",
+      "Paid data sources can lag or change terms",
+    ],
+    source: "Multi-source research agent pattern (social + on-chain + TA)",
   },
   {
     id: "7",
@@ -180,6 +201,7 @@ export const useCases: UseCase[] = [
       "Prompt injection via public channels",
       "Plugin bugs can send wrong amounts — start tiny",
     ],
+    source: "ElizaOS + @elizaos/plugin-solana / Solana Agent Kit",
     featured: true,
   },
   {
@@ -197,6 +219,12 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-06",
     description:
       "Wayfinder lets agents follow Paths across chains. You describe the goal; the agent plans and can execute under your constraints. Best used with explicit spending limits.",
+    risks: [
+      "Cross-chain path failures leave funds mid-route",
+      "Ambiguous prompts can trigger unintended actions",
+      "Always set hard spend ceilings before enabling execution",
+    ],
+    source: "Wayfinder (agentic finance landscape)",
   },
   {
     id: "9",
@@ -213,6 +241,12 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-06",
     description:
       "HeyAnon is rule-based with chat UI. You define conditions and size; the agent executes. Suitable for simpler strategies where you want autonomy without writing code.",
+    risks: [
+      "Full autonomy amplifies strategy errors",
+      "Leverage rules must be explicit or position size can blow up",
+      "Platform downtime during volatility",
+    ],
+    source: "HeyAnon (Cambrian agentic finance report)",
   },
   {
     id: "10",
@@ -229,6 +263,12 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-06",
     description:
       "Bankr combines research and execution. Users chat to move assets, launch tokens, or check positions. Works well as a daily driver for Base-focused DeFi with human approval on larger moves.",
+    risks: [
+      "Token launch features are high risk by nature",
+      "Confirm every non-trivial transaction",
+      "Dependency on Base ecosystem and product uptime",
+    ],
+    source: "Bankr / Clanker ecosystem",
   },
   {
     id: "11",
@@ -251,6 +291,12 @@ export const useCases: UseCase[] = [
       "Run security audit on a token",
       "Confirm small buy if audit is clean",
     ],
+    risks: [
+      "Audits miss novel scam patterns",
+      "Meme liquidity can vanish after entry",
+      "Keep size tiny — this is speculative by design",
+    ],
+    source: "Binance Developer Docs — Agentic Wallet use cases",
   },
   {
     id: "12",
@@ -267,6 +313,12 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-06",
     description:
       "aixbt focuses on market intelligence rather than execution. Use it to surface narratives, track influencers, and get structured alpha notes that you then act on with a separate trading setup.",
+    risks: [
+      "Narrative heat is not the same as edge",
+      "KOL tracking can amplify crowded trades",
+      "Do not treat research output as financial advice",
+    ],
+    source: "aixbt (agentic finance / market intelligence agents)",
   },
 ];
 
