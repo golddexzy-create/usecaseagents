@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { UseCaseCard } from "@/components/UseCaseCard";
 import type { UseCase } from "@/data/use-cases";
 import { categories } from "@/data/use-cases";
@@ -16,12 +16,22 @@ const costs = ["Free", "Freemium", "Paid"] as const;
 const selectClass =
   "h-10 w-full min-w-0 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 sm:w-auto sm:min-w-[140px]";
 
-export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
+export function UseCasesDirectory({
+  useCases,
+  initialCategory = "",
+}: {
+  useCases: UseCase[];
+  initialCategory?: string;
+}) {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState<string>("");
-  const [difficulty, setDifficulty] = useState<string>("");
-  const [autonomy, setAutonomy] = useState<string>("");
-  const [cost, setCost] = useState<string>("");
+  const [category, setCategory] = useState(initialCategory);
+  const [difficulty, setDifficulty] = useState("");
+  const [autonomy, setAutonomy] = useState("");
+  const [cost, setCost] = useState("");
+
+  useEffect(() => {
+    setCategory(initialCategory);
+  }, [initialCategory]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
