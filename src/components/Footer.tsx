@@ -48,7 +48,7 @@ export function Footer() {
           </div>
         </div>
         <p className="mt-8 border-t border-zinc-100 pt-6 text-xs text-zinc-400 dark:border-zinc-800 dark:text-zinc-500">
-          © {new Date().getFullYear()} UseCaseAgents. Not financial advice.
+          © 2026 UseCaseAgents. Not financial advice.
           Always verify tools and start with capital you can afford to lose.
         </p>
       </div>
