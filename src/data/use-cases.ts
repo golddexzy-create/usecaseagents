@@ -15,6 +15,7 @@ export interface UseCase {
   lastUpdated: string;
   description: string;
   steps?: string[];
+  risks?: string[];
   source?: string;
   featured?: boolean;
 }
@@ -47,12 +48,17 @@ export const useCases: UseCase[] = [
     cost: "Freemium",
     lastUpdated: "2026-10-10",
     description:
-      "Users write strategies in natural language (e.g. “RSI < 30 on SOL 15m, take profit at 3%, stop at 1.5%”). The agent compiles the rules, runs a backtest on recent data, and deploys a non-custodial session key that can only place trades.",
+      "Users write strategies in natural language (e.g. RSI under 30 on SOL 15m, take profit at 3%, stop at 1.5%). The agent compiles the rules, runs a backtest on recent data, and deploys a non-custodial session key that can only place trades.",
     steps: [
       "Connect Hyperliquid account with trade-only API key",
       "Describe strategy in chat",
       "Review backtest results and risk parameters",
       "Approve deployment; agent runs within limits",
+    ],
+    risks: [
+      "Bad strategy still loses money — agent only executes rules",
+      "API key leakage if not scoped to trade-only",
+      "Slippage and funding can diverge from backtest",
     ],
     featured: true,
   },
@@ -71,6 +77,11 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-12",
     description:
       "Combines on-chain data (new pools, liquidity adds, top holders) with X/Telegram sentiment. Outputs ranked shortlists with risk flags (honeypot patterns, insider concentration).",
+    risks: [
+      "False positives/negatives on honeypot detection",
+      "Social volume can be gamed",
+      "Never auto-buy from this alone — human gate required",
+    ],
     featured: true,
   },
   {
@@ -88,6 +99,11 @@ export const useCases: UseCase[] = [
     lastUpdated: "2026-10-08",
     description:
       "Agent reads current balances, compares to target weights, estimates net cost of rebalance (including bridges), and only executes when the improvement exceeds a threshold you set.",
+    risks: [
+      "Bridge risk and failed txs on congested networks",
+      "Threshold too aggressive leads to churn and fees",
+      "Oracle/price lag can mis-size rebalances",
+    ],
     featured: true,
   },
   {
@@ -152,12 +168,17 @@ export const useCases: UseCase[] = [
     cost: "Free",
     lastUpdated: "2026-10-14",
     description:
-      "Create a character file, add @elizaos/plugin-solana (or Solana Agent Kit), set a trade-only or limited key, and let the agent handle quotes, swaps via Jupiter, and token info. Keep risk limits in the character instructions and require confirmation for sizeable trades.",
+      "Create a character file, add Solana plugin, set a trade-only or limited key, and let the agent handle quotes, swaps via Jupiter, and token info. Keep risk limits in the character instructions.",
     steps: [
       "Install ElizaOS and add Solana plugin",
       "Define character with clear risk rules and allowed actions",
       "Connect wallet / private key with limited permissions",
       "Run agent on Telegram or Discord and test with paper amounts",
+    ],
+    risks: [
+      "Hot wallet exposure if key is not limited",
+      "Prompt injection via public channels",
+      "Plugin bugs can send wrong amounts — start tiny",
     ],
     featured: true,
   },
@@ -175,7 +196,7 @@ export const useCases: UseCase[] = [
     cost: "Freemium",
     lastUpdated: "2026-10-06",
     description:
-      "Wayfinder lets agents follow ‘Paths’ across chains. You describe the goal (e.g. move USDC from Base to Hyperliquid and open a small perp); the agent plans and can execute under your constraints. Best used with explicit spending limits.",
+      "Wayfinder lets agents follow Paths across chains. You describe the goal; the agent plans and can execute under your constraints. Best used with explicit spending limits.",
   },
   {
     id: "9",
@@ -223,7 +244,7 @@ export const useCases: UseCase[] = [
     cost: "Free",
     lastUpdated: "2026-10-16",
     description:
-      "Conversation flow: ask for new Solana memes → audit a candidate → buy with fixed USDT amount if risk looks acceptable. Skills handle discovery and security checks; wallet executes only after you confirm.",
+      "Conversation flow: ask for new Solana memes, audit a candidate, buy with fixed USDT amount if risk looks acceptable. Skills handle discovery and security checks; wallet executes only after you confirm.",
     steps: [
       "Install Agentic Wallet and required skills",
       "Ask for recent meme launches",
