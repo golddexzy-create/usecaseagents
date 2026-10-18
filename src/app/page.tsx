@@ -6,10 +6,10 @@ export default function Home() {
   const featured = getFeaturedUseCases();
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-14">
       {/* Hero */}
       <section className="text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
+        <h1 className="text-[1.75rem] font-bold leading-tight tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl">
           Practical AI agent setups
           <br />
           <span className="text-emerald-600 dark:text-emerald-400">
@@ -67,7 +67,7 @@ export default function Home() {
           {categories.map((cat) => (
             <Link
               key={cat}
-              href={`/categories?cat=${encodeURIComponent(cat)}`}
+              href={`/use-cases?category=${encodeURIComponent(cat)}`}
               className="rounded-lg border border-zinc-200 bg-white px-4 py-3 text-center text-sm font-medium text-zinc-700 transition hover:border-emerald-300 hover:bg-emerald-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-emerald-700 dark:hover:bg-emerald-950/30"
             >
               {cat}
