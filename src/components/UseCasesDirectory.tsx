@@ -13,6 +13,9 @@ const autonomies = [
 ] as const;
 const costs = ["Free", "Freemium", "Paid"] as const;
 
+const selectClass =
+  "h-10 w-full min-w-0 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 sm:w-auto sm:min-w-[140px]";
+
 export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("");
@@ -50,31 +53,30 @@ export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
     setCost("");
   };
 
-  const hasFilters = query || category || difficulty || autonomy || cost;
+  const hasFilters = !!(query || category || difficulty || autonomy || cost);
 
   return (
     <div>
-      {/* Search */}
-      <div className="mb-6">
+      <div className="mb-5">
         <label htmlFor="search" className="sr-only">
           Search use cases
         </label>
         <input
           id="search"
           type="search"
-          placeholder="Search by title, tool, chain, category..."
+          placeholder="Search title, tool, chain, category..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="h-11 w-full rounded-full border border-zinc-300 bg-white px-5 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+          className="h-11 w-full rounded-xl border border-zinc-300 bg-white px-4 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
         />
       </div>
 
-      {/* Filters */}
-      <div className="mb-8 flex flex-wrap items-center gap-2">
+      <div className="mb-6 grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:items-center">
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="h-9 rounded-full border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+          className={selectClass}
+          aria-label="Filter by category"
         >
           <option value="">All categories</option>
           {categories.map((c) => (
@@ -87,7 +89,8 @@ export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
         <select
           value={difficulty}
           onChange={(e) => setDifficulty(e.target.value)}
-          className="h-9 rounded-full border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+          className={selectClass}
+          aria-label="Filter by difficulty"
         >
           <option value="">All difficulties</option>
           {difficulties.map((d) => (
@@ -100,7 +103,8 @@ export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
         <select
           value={autonomy}
           onChange={(e) => setAutonomy(e.target.value)}
-          className="h-9 rounded-full border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+          className={selectClass}
+          aria-label="Filter by autonomy"
         >
           <option value="">All autonomy</option>
           {autonomies.map((a) => (
@@ -113,7 +117,8 @@ export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
         <select
           value={cost}
           onChange={(e) => setCost(e.target.value)}
-          className="h-9 rounded-full border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300"
+          className={selectClass}
+          aria-label="Filter by cost"
         >
           <option value="">All costs</option>
           {costs.map((c) => (
@@ -127,7 +132,7 @@ export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
           <button
             type="button"
             onClick={clearFilters}
-            className="h-9 rounded-full px-3 text-xs font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
+            className="col-span-2 h-10 rounded-xl px-3 text-sm font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/40 sm:col-span-1"
           >
             Clear filters
           </button>
@@ -139,11 +144,11 @@ export function UseCasesDirectory({ useCases }: { useCases: UseCase[] }) {
       </p>
 
       {filtered.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-300 py-16 text-center text-zinc-500 dark:border-zinc-700">
-          No use cases match your filters. Try clearing them.
+        <div className="rounded-2xl border border-dashed border-zinc-300 py-14 text-center text-sm text-zinc-500 dark:border-zinc-700">
+          No use cases match. Try clearing filters.
         </div>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {filtered.map((uc) => (
             <UseCaseCard key={uc.id} useCase={uc} />
           ))}
