@@ -15,9 +15,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UseCaseAgents – Practical AI Agent Setups for Crypto & Trading",
+  metadataBase: new URL("https://usecaseagents.com"),
+  title: {
+    default: "UseCaseAgents – Practical AI Agent Setups for Crypto & Trading",
+    template: "%s | UseCaseAgents",
+  },
   description:
-    "Find real, working AI agent setups for crypto trading, research, Solana, memecoins, portfolio management, risk, and more. No fluff. Just what works.",
+    "Find real, working AI agent setups for crypto trading, research, Solana, memecoins, portfolio management, risk, and more. No fluff. Just what works — with honest failure modes.",
   keywords: [
     "crypto AI agents",
     "AI trading agents",
@@ -25,7 +29,28 @@ export const metadata: Metadata = {
     "memecoin agents",
     "crypto agent use cases",
     "AI agent setups",
+    "ElizaOS",
+    "Hyperliquid agents",
   ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://usecaseagents.com",
+    siteName: "UseCaseAgents",
+    title: "UseCaseAgents – Practical AI Agent Setups for Crypto",
+    description:
+      "Working AI agent recipes for crypto and trading — with tools, steps, and what can go wrong.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UseCaseAgents – Practical crypto AI agent setups",
+    description:
+      "Real setups for trading, Solana, research, and portfolio agents. Honest risks included.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
